@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Панель водителя</title>
+</head>
+<body>
+    <h1>Панель водителя</h1>
+    <h2>Доступные заказы:</h2>
+    <ul>
+        {% for order in available_orders %}
+            <li>
+                Заказ #{{ order.id }} - {{ order.product.name }} ({{ order.quantity }} шт.)
+                <br>Адрес: {{ order.destination_address }}
+                <a href="{% url 'accept_order' order.id %}">Принять заказ</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <h2>Ваши заказы:</h2>
+    <ul>
+        {% for order in my_orders %}
+            <li>
+                Заказ #{{ order.id }} - {{ order.product.name }} ({{ order.quantity }} шт.)
+                <br>Статус: {{ order.get_status_display }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

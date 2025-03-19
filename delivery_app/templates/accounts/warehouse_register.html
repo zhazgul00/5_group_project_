@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Регистрация склада</title>
+</head>
+<body>
+    <h1>Регистрация склада</h1>
+    <form method="post">
+        {% csrf_token %}
+        <!-- Поля для регистрации -->
+        <label for="username">Имя пользователя:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="password1">Пароль:</label>
+        <input type="password" id="password1" name="password1" required><br><br>
+
+        <label for="password2">Подтвердите пароль:</label>
+        <input type="password" id="password2" name="password2" required><br><br>
+
+        <label for="company_name">Название компании:</label>
+        <input type="text" id="company_name" name="company_name" required><br><br>
+
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+
+    <!-- Отображение сообщений об ошибках -->
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li style="color: red;">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Ссылка на вход, если уже есть аккаунт -->
+    <p>Уже есть аккаунт? <a href="{% url 'signin' %}">Войдите</a></p>
+</body>
+</html>

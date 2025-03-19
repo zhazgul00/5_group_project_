@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AykiExpress</title>
+</head>
+<body>
+    <h1>Добро пожаловать!</h1>
+    <p>Выберите свою роль:</p>
+    <ul>
+        <li><a href="{% url 'driver_register' %}?role=driver">водитель</a></li>
+        <li><a href="{% url 'store_register' %}?role=store">магазин</a></li>
+        <li><a href="{% url 'warehouse_register' %}?role=warehouse">склад</a></li>
+    </ul>
+</body>
+</html>

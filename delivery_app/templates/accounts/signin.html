@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign In</title>
+</head>
+<body>
+    <h1>Sign In</h1>
+    <form method="post"  action="{% url 'signin' %}">
+        {% csrf_token %}
+        <label for="username">Имя пользователя:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <button type="submit">Войти</button>
+    </form>
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li style="color: red;">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <p>Нет аккаунта? <a href="{% url 'main_view' %}">Зарегистрируйтесь</a></p>
+</body>
+</html>

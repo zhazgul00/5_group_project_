@@ -20,6 +20,8 @@ class Driver(models.Model):
     # Метка для soft delete (мягкого удаления)
     is_deleted = models.BooleanField(default=False, verbose_name="Is Deleted")
 
+    capacity = models.PositiveIntegerField(default=0, verbose_name="Capacity (kg)")
+
     def __str__(self):
         return f"{self.user.username} ({self.vehicle_type})"
 

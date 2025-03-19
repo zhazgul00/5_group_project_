@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Панель управления складом</h1>
+<h2>Товары</h2>
+<ul>
+    {% for product in products %}
+    <li>{{ product.name }} - {{ product.quantity }} шт. - {{ product.price }} руб.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'add_product' %}">Добавить товар</a>
+
+<h2>Заказы</h2>
+<ul>
+    {% for order in orders %}
+    <li>
+        Заказ #{{ order.id }} - {{ order.product.name }} ({{ order.quantity }} шт.) - {{ order.status }}
+        <a href="{% url 'update_order_status' order.id %}">Изменить статус</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

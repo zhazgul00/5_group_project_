@@ -1,6 +1,15 @@
 from django.db import models
 from warehouses.models import Product
+from django.contrib.auth.models import User
 from drivers.models import Driver
+
+class Store(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255, verbose_name="Название магазина")
+    address = models.CharField(max_length=255, verbose_name="Адрес магазина")
+
+    def __str__(self):
+        return self.name
 
 class Order(models.Model):
     # Значения для статусов 

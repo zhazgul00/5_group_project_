@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+</head>
+<body>
+    <h1>Регистрация магазина</h1>
+    <form method="post" action="{% url 'store_register' %}">
+        {% csrf_token %}
+        <label for="username">Имя пользователя:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="name">Название магазина:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="address">Адресс:</label>
+        <input type="text" id="address" name="address" required><br><br>
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li style="color: red;">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <p>Уже есть аккаунт? <a href="{% url 'signin' %}">Войдите</a></p>
+</body>
+</html>
