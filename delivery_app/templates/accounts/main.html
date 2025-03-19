@@ -1,15 +1,18 @@
+<!-- templates/accounts/main.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>AykiExpress</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
 </head>
 <body>
-    <h1>Добро пожаловать!</h1>
-    <p>Выберите свою роль:</p>
-    <ul>
-        <li><a href="{% url 'driver_register' %}?role=driver">водитель</a></li>
-        <li><a href="{% url 'store_register' %}?role=store">магазин</a></li>
-        <li><a href="{% url 'warehouse_register' %}?role=warehouse">склад</a></li>
-    </ul>
+    <h1>Выберите роль</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" name="role" value="store">Магазин</button>
+        <button type="submit" name="role" value="driver">Водитель</button>
+        <button type="submit" name="role" value="warehouse">Склад</button>
+    </form>
 </body>
 </html>

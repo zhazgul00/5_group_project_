@@ -60,6 +60,8 @@ def store_register(request):
             )
             login(request, user)
             return redirect('stores:store_dashboard')
+        else:
+            print(form.errors)  
     else:
         form = StoreRegistrationForm()
     return render(request, 'accounts/store_register.html', {'form': form})
