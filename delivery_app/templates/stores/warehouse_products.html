@@ -1,0 +1,43 @@
+<!-- stores/warehouse_products.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Товары на складах</title>
+</head>
+<body>
+    <h1>Товары на складах</h1>
+    <nav>
+        <ul>
+            <li><a href="{% url 'stores:dashboard' %}">Назад в панель управления</a></li>
+        </ul>
+    </nav>
+
+    <section>
+        <h2>Доступные товары</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Описание</th>
+                    <th>Количество</th>
+                    <th>Цена</th>
+                    <th>Склад</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.quantity }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.warehouse.company_name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</body>
+</html>

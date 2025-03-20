@@ -1,13 +1,13 @@
-<!-- stores/order_history.html -->
+<!-- stores/orders.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>История заказов</title>
+    <title>Текущие заказы</title>
 </head>
 <body>
-    <h1>История заказов</h1>
+    <h1>Текущие заказы</h1>
     <nav>
         <ul>
             <li><a href="{% url 'stores:dashboard' %}">Назад в панель управления</a></li>
@@ -15,7 +15,7 @@
     </nav>
 
     <section>
-        <h2>История заказов</h2>
+        <h2>Список заказов</h2>
         <table border="1">
             <thead>
                 <tr>
@@ -24,18 +24,16 @@
                     <th>Количество</th>
                     <th>Статус</th>
                     <th>Дата создания</th>
-                    <th>Дата завершения</th>
                 </tr>
             </thead>
             <tbody>
-                {% for order in order_history %}
+                {% for order in orders %}
                 <tr>
                     <td>{{ order.id }}</td>
                     <td>{{ order.product.name }}</td>
                     <td>{{ order.quantity }}</td>
                     <td>{{ order.get_status_display }}</td>
                     <td>{{ order.created_at }}</td>
-                    <td>{{ order.updated_at }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

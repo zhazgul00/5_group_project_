@@ -1,0 +1,26 @@
+<!-- stores/dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Store</title>
+</head>
+<body>
+    <h1>Панель управления магазина</h1>
+    <nav>
+        <ul>
+            <li><a href="{% url 'stores:warehouse_products' %}">Товары на складах</a></li>
+            <li><a href="{% url 'stores:orders' %}">Текущие заказы</a></li>
+            <li><a href="{% url 'stores:order_history' %}">История заказов</a></li>
+            <li><a href="{% url 'signout' %}">Выйти</a></li>
+        </ul>
+    </nav>
+
+    <section>
+        <h2>Общая информация</h2>
+        <p>Добро пожаловать, {{ request.user.store.name }}!</p>
+        <p>Адрес: {{ request.user.store.address }}</p>
+    </section>
+</body>
+</html>
