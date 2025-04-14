@@ -22,21 +22,21 @@ def signout_view(request):
     logout(request)
     return redirect('main')
 
+# accounts/views.py
+from django.shortcuts import redirect
+
 def signin_view(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
+        # Handle login logic
+        user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
         if user is not None:
             login(request, user)
             if hasattr(user, 'store'):
-                return redirect('stores/dashboard')
-            elif hasattr(user, 'driver'):
-                return redirect('drivers/dashboard')
+                return redirect('stores:store_dashboard')  # Redirect to store dashboard
             elif hasattr(user, 'warehouse'):
-                return redirect('warehouses/dashboard')
-        else:
-            messages.error(request, 'Неверное имя пользователя или пароль')
+                return redirect('warehouses:dashboard')  # Redirect to warehouse dashboard
+            elif hasattr(user, 'driver'):
+                return redirect('drivers:dashboard')  # Redirect to driver dashboard
     return render(request, 'accounts/signin.html')
 
 def store_register(request):
@@ -91,11 +91,3 @@ def warehouse_register(request):
 from django.urls import path
 from .views import main_view, signin_view, signout_view, store_register, warehouse_register, driver_register
 
-urlpatterns = [
-    path('', main_view, name='main'),  
-    path('signin/', signin_view, name='signin'),
-    path('warehouse_register/', warehouse_register, name='warehouse_register'),
-    path('driver_register/', driver_register, name='driver_register'),
-    path('store_register/', store_register, name='store_register'),
-    path('signout/', signout_view, name='signout'),
-]

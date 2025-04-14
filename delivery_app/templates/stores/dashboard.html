@@ -10,9 +10,9 @@
     <h1>Панель управления магазина</h1>
     <nav>
         <ul>
-            <li><a href="{% url 'stores:warehouse_products' %}">Товары на складах</a></li>
+            <li><a href="{% url 'stores:warehouse_products' warehouse_id=1 %}">Товары на складах</a></li>
             <li><a href="{% url 'stores:orders' %}">Текущие заказы</a></li>
-            <li><a href="{% url 'stores:order_history' %}">История заказов</a></li>
+            <li><a href="{% url 'stores:store_order_history' %}">История заказов</a></li>
             <li><a href="{% url 'signout' %}">Выйти</a></li>
         </ul>
     </nav>

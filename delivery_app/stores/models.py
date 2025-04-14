@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from drivers.models import Driver
 
 class Store(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE,  related_name='store')
     name = models.CharField(max_length=255, verbose_name="Название магазина")
     address = models.CharField(max_length=255, verbose_name="Адрес магазина")
 
@@ -25,7 +25,7 @@ class Order(models.Model):
         (STATUS_DELIVERED, 'Delivered'),
         (STATUS_CANCELLED, 'Cancelled'),
     ]
-
+    store = models.ForeignKey(Store, on_delete=models.CASCADE, verbose_name="Store", default=1)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name="Product")
     quantity = models.PositiveIntegerField(verbose_name="Quantity")
     destination_address = models.CharField(max_length=255, verbose_name="Destination Address")

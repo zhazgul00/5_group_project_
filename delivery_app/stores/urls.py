@@ -8,5 +8,5 @@ app_name = 'stores'
 urlpatterns = [
     path('dashboard/', store_dashboard, name='store_dashboard'),
     path('warehouse/<int:warehouse_id>/', warehouse_products, name='warehouse_products'),
-    path('orders/', store_orders, name='store_orders'),
+    path('orders/', store_orders, name='orders'),
     path('order-history/', store_order_history, name='store_order_history'),]
